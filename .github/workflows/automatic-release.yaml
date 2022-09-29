@@ -1,0 +1,19 @@
+---
+name: Automatic-Release
+
+# Run on every tag that begins with "v" (e.g. "v0.1.2")
+on:
+  push:
+    tags:
+      - "v*"
+
+# Automatically create GH release with release details specified (commits)
+jobs:
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
